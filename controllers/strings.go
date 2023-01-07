@@ -29,9 +29,8 @@ func GetString(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "not found"})
 		return
 	}
-
+	models.DB.Where("string_key = ?", c.Param("key")).Delete(&savedString)
 	c.IndentedJSON(http.StatusOK, gin.H{"data": savedString})
-
 }
 
 func PutString(c *gin.Context) {
@@ -44,6 +43,5 @@ func PutString(c *gin.Context) {
 	key := randomdata.SillyName()
 	newString := models.SaveString{StringKey: key, StringValue: input.StringValue}
 	models.DB.Create(&newString)
-	//
-
+	c.String(http.StatusOK, key+"\n")
 }
