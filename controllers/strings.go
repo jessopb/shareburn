@@ -8,12 +8,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// imporr
 type PutStringInput struct {
 	StringValue string `json:"string_value" binding:"required"`
 }
-
-// type struct
 
 func GetStrings(c *gin.Context) {
 	var allstrings []models.SaveString
