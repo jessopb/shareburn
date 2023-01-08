@@ -6,7 +6,7 @@ App for quickly moving a string (or eventually, a file) to a remote machine.
 ## Why
 Sometimes you need a key and you don't want to log in to your email.
 
-## HOW
+## How
 
 ### CURL
 
@@ -18,3 +18,11 @@ Sometimes you need a key and you don't want to log in to your email.
 `$ curl localhost:8091/poofs/Rovershadow`
 `newstring`
 
+# ROADMAP
+ - Simple post / get
+ - Env for port etc
+ - Add files
+ - Log in for larger file capability
+ - Frontend
+ - cmd line app
+ - delete strings after 1 hour
