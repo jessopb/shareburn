@@ -2,8 +2,8 @@ package main
 
 import (
 	"net/http"
-	"poof/controllers"
-	"poof/models"
+	"shareburn/controllers"
+	"shareburn/models"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,9 +20,9 @@ func main() {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
 
-	r.GET("/poofs", controllers.GetStrings)
-	r.GET("/poofs/:key", controllers.GetString)
-	r.POST("/poof", controllers.PutString)
+	r.GET("/s", controllers.GetStrings)
+	r.GET("/s/:key", controllers.GetString)
+	r.POST("/s", controllers.PutString)
 	// r.Use(cors.Default())
 	r.Run("localhost:8091")
 

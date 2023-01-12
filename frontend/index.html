@@ -10,16 +10,21 @@
 </head>
 
 <body>
-    <h1>Poof</h1>
-    <div class="form">
-        <label for="inputstring">Input String</label>
-        <input type="text" id="inputstring">
-        <button id="btnsubmit" onclick="doit(event)">Send</button>
-    </div>
-    <div>
-        <label for="pooflink">Poof Link</label>
-        <input id="pooflink" value="..."></input>
-        <button id="btncopy" onclick="selectAndCopy(event)">Copy</button>
+    <div class="container">
+        <h1>This String Will Self Destruct</h1>
+        <div class="inputfield">
+            <label for="inputstring">Input:</label>
+            <input type="text" id="inputstring">
+            <button id="btnsubmit" onclick="doit(event)">Send</button>
+        </div>
+        <div class="outputfield">
+            <label for="slink">Key:</label>
+            <input id="slink" value="..."></input>
+            <button id="btncopy" onclick="selectAndCopy(event)">Copy</button>
+        </div>
+        <p><code>$ curl localhost:8091/s/{key}</code>
+        </p>
+        <p><code>$ wget localhost:8091/s/{key}</key></code></p>
     </div>
 </body>
 <script>
@@ -29,14 +34,14 @@
 
         console.log('in', input)
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'http://localhost:8091/poof')
+        xhr.open("POST", 'http://localhost:8091/s')
         xhr.setRequestHeader("Content-Type", "application/json")
         var body = JSON.stringify({ "string_value": input })
 
         xhr.onreadystatechange = () => { // Call a function when the state changes.
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 console.log('res', xhr.response)
-                document.getElementById("pooflink").value = xhr.response;
+                document.getElementById("slink").value = xhr.response;
             }
             else {
 
@@ -46,7 +51,7 @@
         xhr.send(body)
     }
     function selectAndCopy(e) {
-        var input = document.getElementById("pooflink");
+        var input = document.getElementById("slink");
         input.focus();
         input.select();
 

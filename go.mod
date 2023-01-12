@@ -1,4 +1,4 @@
-module poof
+module shareburn
 
 go 1.19
 
