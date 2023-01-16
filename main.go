@@ -10,9 +10,8 @@ import (
 
 func main() {
 	r := gin.Default()
-	// r.LoadHTMLGlob("frontend/*.html")
-	r.LoadHTMLFiles("frontend/index.html")
-	r.Static("/static", "frontend/styles/")
+	r.LoadHTMLFiles("/frontend/index.html")
+	r.Static("/static", "/frontend/styles/")
 
 	models.ConnectDatabase()
 
@@ -24,6 +23,5 @@ func main() {
 	r.GET("/s/:key", controllers.GetString)
 	r.POST("/s", controllers.PutString)
 	// r.Use(cors.Default())
-	r.Run("localhost:8091")
-
+	r.Run("0.0.0.0:8091")
 }
