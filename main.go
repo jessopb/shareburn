@@ -1,14 +1,22 @@
 package main
 
 import (
+	"fmt"
+	"log"
 	"net/http"
+	"os"
 	"shareburn/controllers"
 	"shareburn/models"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 	r := gin.Default()
 	r.LoadHTMLFiles("/frontend/index.html")
 	r.Static("/static", "/frontend/styles/")
@@ -23,5 +31,5 @@ func main() {
 	r.GET("/s/:key", controllers.GetString)
 	r.POST("/s", controllers.PutString)
 	// r.Use(cors.Default())
-	r.Run("0.0.0.0:8091")
+	r.Run(fmt.Sprintf("%s:%s", os.Getenv("SERVE_IP"), os.Getenv("SERVE_PORT")))
 }
