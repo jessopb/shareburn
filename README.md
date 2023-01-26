@@ -1,12 +1,9 @@
 # ShareBurn
 
-## What
-App for quickly moving a string (or eventually, a file) to a remote machine.
+## About
 
-## Why
-Sometimes you need a key and you don't want to log in to your email.
+Sometimes you need a string from another machine and you don't want to log in to install or log in to another service.
 
-## How
 ### CURL
 
 #### Post a string
@@ -17,12 +14,18 @@ Sometimes you need a key and you don't want to log in to your email.
 `$ curl localhost:8092/s/Rovershadow`
 `newstring`
 
-# Deploy
-## Docker
+## Deploy
+
+### Docker
  - docker build .
  - sudo docker run -d -p 0.0.0.0:8092:8092 local/shareburn
 
-# ROADMAP
+## Dev
+### Local
+ - go get .
+ - go run .
+
+## ROADMAP
  - Support encryption
  - Add files
  - Log in for larger file capability
