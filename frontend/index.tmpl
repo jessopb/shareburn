@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        <h1>This String Will Self Destruct</h1>
+        <h1>{{ .title }}</h1>
         <div class="inputfield">
             <label for="inputstring">Input:</label>
             <input type="text" id="inputstring">
@@ -22,9 +22,9 @@
             <input id="slink" value="..."></input>
             <button id="btncopy" onclick="selectAndCopy(event)">Copy</button>
         </div>
-        <p><code>$ curl hostname/s/{key}</code>
+        <p><code>$ curl {{ .host }}/s/{key}</code>
         </p>
-        <p><code>$ wget hostname/s/{key}</key></code></p>
+        <p><code>$ wget {{ .host }}/s/{key}</key></code></p>
     </div>
 </body>
 <script>
@@ -34,7 +34,7 @@
 
         console.log('in', input)
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'http://localhost:8092/s')
+        xhr.open("POST", '{{ .host }}/s')
         xhr.setRequestHeader("Content-Type", "application/json")
         var body = JSON.stringify({ "string_value": input })
 
