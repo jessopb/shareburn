@@ -4,8 +4,9 @@
 
 Sometimes you need a string from another machine and you don't want to log in to install or log in to another service.
 
-### CURL
+## Usage
 
+### Curl 
 #### Post a string
 `$ curl -X POST http://localhost:8092/s -H 'Content-Type: application/json' -d '{"string_value":"newstring"}'`
 `Rovershadow`
@@ -13,6 +14,9 @@ Sometimes you need a string from another machine and you don't want to log in to
 #### Get a string
 `$ curl localhost:8092/s/Rovershadow`
 `newstring`
+
+### Website
+
 
 ## Deploy
 
