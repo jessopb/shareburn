@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"net/http"
-	"shareburn/models"
+	"shareburn/server/models"
 
 	"github.com/Pallinder/go-randomdata"
 	"github.com/gin-gonic/gin"

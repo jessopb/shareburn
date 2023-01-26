@@ -1,5 +1,5 @@
 FROM golang:1.17 AS builder
-
+ENV SERVE_PORT 8092
 WORKDIR /src
 COPY . .
 RUN go mod download
@@ -9,6 +9,8 @@ RUN ls
 FROM alpine
 COPY --from=builder /app /app
 COPY frontend/ /frontend/
-EXPOSE 8091
+
+ENV GIN_MODE release
+EXPOSE $SERVE_PORT
 
 ENTRYPOINT ["/app"]

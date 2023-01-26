@@ -22,9 +22,9 @@
             <input id="slink" value="..."></input>
             <button id="btncopy" onclick="selectAndCopy(event)">Copy</button>
         </div>
-        <p><code>$ curl localhost:8091/s/{key}</code>
+        <p><code>$ curl hostname/s/{key}</code>
         </p>
-        <p><code>$ wget localhost:8091/s/{key}</key></code></p>
+        <p><code>$ wget hostname/s/{key}</key></code></p>
     </div>
 </body>
 <script>
@@ -34,7 +34,7 @@
 
         console.log('in', input)
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'http://localhost:8091/s')
+        xhr.open("POST", 'http://localhost:8092/s')
         xhr.setRequestHeader("Content-Type", "application/json")
         var body = JSON.stringify({ "string_value": input })
 
@@ -45,7 +45,7 @@
             }
             else {
 
-                console.log('wtf', xhr.status)
+                console.log('Error', xhr.status)
             }
         }
         xhr.send(body)
@@ -54,7 +54,6 @@
         var input = document.getElementById("slink");
         input.focus();
         input.select();
-
         document.execCommand('copy');
     }
 </script>
